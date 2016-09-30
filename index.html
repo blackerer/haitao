@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>globelhaitao</title>
+		<link rel="stylesheet" type="text/css" href="css/head_nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+		<style type="text/css">
+			#fixed{width: 110px;height: 159px;position: fixed;left: 0;top:220px;border-radius: 10%;z-index: 2;background: white;}
+			#fixed .service{display: block;width: 80px;height:32px;margin-top: 12px;margin-left: 15px;border-bottom: 1px solid #eeeeee;font-size: 12px;color: #666666;line-height: 32px;text-align: center;}
+			#fixed .hot_wire{width: 80px;height: 91px;margin-top: 5px;margin-left: 15px;}
+			#fixed .hot_wire li{list-style: none;width: 80px;height: 30px;line-height: 30px;padding-left: 22px;font-size:12px;color: #666666;}
+			#fixed .hot_wire li a{text-decoration: none;color: #666666;}
+			
+			
+			#flexslide{width: 1428px;height: 450px;background: cyan;margin: 0 auto;position: relative;}
+			#flexslide #slide{width:100%;height:100%;position: relative;z-index: 1;background: red;}
+			#flexslide #slide  li{position: absolute;opacity: 1;width: 100%;height:100%;list-style: none;overflow: hidden;}
+			#flexslide #slide  li img{border: none;width: 100%;height: 100%;}
+			#flexslide #follow{position: absolute;left: 647px;top: 421px;z-index:2;}
+			#flexslide #follow li{width: 12px;height: 12px;background-color:#656565;border-radius: 100%;margin-right: 12px;float: left;list-style: none;cursor: pointer;}
+			
+			#conduct{width: 1428px;height: 7644px;margin: 0 auto;background: #152e4d;position: relative;}
+			#conduct #more_select{width: 1200px;height: 36px;margin-left: 112px;}
+			#conduct #more_select  #m_conduct{width: 75px;height: 36px;float: right;}
+			#conduct #m_conduct .more{display: block;font-size: 12px;line-height: 36px;float: left;}
+			#conduct #m_conduct  a{text-decoration: none;color: white;}
+			#conduct #m_conduct .more_r{display: block;float: right;border-color:transparent transparent transparent #cccccc ;border-style:solid;border-width:8px;margin-right:5px;margin-top:8px;width: 0;height: 0; }
+			#conduct #more_select #seasonal{font-size: 14px;color: #333333;line-height: 36px;width:71px;height: 36px;float: left;}
+			#conduct #more_select #seasonal a{text-decoration: none;color: #333333;}
+			
+			#conduct #T_select{width: 1199px;height: 1052px;margin-left: 115px;margin-bottom:12px;background: aqua;}
+			#conduct #T_select .unit_1{float: left;width: 31.5%;height:235px;border-left: 1px solid #efefef;margin: 8px 0 0 -1px;background:#FFFFFF;padding: 10px;}
+			#conduct #T_select .unit_1 a{text-decoration: none;}
+			#conduct #T_select .unit_1 img{width: 100%;height: 200px;border: none;} 
+			#conduct #T_select .unit_1 .bottom{margin-top: 18px;font-size: 12px;color: #999999;height: 20px;line-height: 20px;width: 100%;}
+			#conduct #T_select .unit_1 .bottom .cls2{border: 8px solid transparent;border-left: 8px solid #CCCCCC ;float: right;display: block;width: 0;height: 0;}		
+			#conduct #T_select .unit_1 .bottom .cls1{display: block;float: right;}
+			
+			#conduct #goods_1{width: 1199px;height: 409px;margin:0 auto;background: deeppink;}
+			#conduct #goods_1 .goods_1_t{width:100%;height: 300px;}
+			#conduct #goods_1 .goods_1_t .big{width:601px;height: 100%;float: left;}
+			#conduct #goods_1 .goods_1_t img{border: none;width: 100%;height: 100%;}
+			#conduct #goods_1 .goods_1_t ul{width: 597px;height: 100%;float: left;}
+			#conduct #goods_1 .goods_1_t ul li{width: 197px;height: 129px;float: left;border-right:1px solid #eee;border-bottom: 1px solid #eee;list-style: none;padding: 10px 0;}
+			#conduct #goods_1 .goods_1_t ul li img{margin: 0 auto;border:none;width: 90px;height: 90px;display: block;}
+			#conduct #goods_1 .goods_1_t ul li b{color: #cc3333;font-size: 9px;float: left;margin-left: 70px;margin-right: 5px;margin-top:20px;display: inline-block;}
+			#conduct #goods_1 .goods_1_t ul li span{color: #666666;font-size: 9px;display: block;float: left;text-decoration: line-through;margin-top: 20px;}
+			#conduct #goods_1 .goods_1_b{height: 108px;width: 100%;}
+			#conduct #goods_1 .goods_1_b li{height: 86px;width: 98px;float: left;border: 1px solid #CCCCCC;list-style: none;border-right: none;padding:10px;}
+			#conduct #goods_1 .goods_1_b li img{border: none;display: block;margin: 0 auto;width: 60px;height: 60px;}
+			#conduct #goods_1 .goods_1_b li span{color: #666666;font-size: 9px;display: block;width: 100%;text-align: center;margin-top:10px ;}
+			
+			
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/scroll.js" ></script>
+		<script type="text/javascript">
+			$(window).ready(function(){
+				flexslide();
+				getData();
+			})
+			function flexslide(){
+				$(function(){
+					var li = $("#flexslide #slide li");
+					var btn = $("#flexslide #follow li");
+					var _index = 0;
+					var timer = null;
+					function move(){
+						_index++;
+						if (_index >= li.size()) {
+							_index = 0;
+						}
+						li.eq(_index).fadeIn(600).siblings().fadeOut(600);
+						btn.eq(_index).addClass("changeback").css("background-color","#ff7a20").siblings().removeClass("changeback").css("background-color","#656565");	
+						
+					}
+					timer = setInterval(move,4000);
+//					btn.hover(
+//						function(){
+//						clearInterval(timer);
+//						_index = $(this).index() - 1;
+//						move();
+//						},function(){
+//							timer = setInterval(move,4000);
+//						});
+					btn.click(function(){
+						_index = $(this).index() - 1;
+						move();
+					});
+				});
+			}
+			function getData(){
+				$.post("json/T_select.json",null,function(data,textStatus){
+					//var Data = eval("("+data+")");
+					console.log(data["data1"].length);
+					select(data);	
+				},"json")
+			}
+			function select(data){
+				var _tselect = document.getElementById("T_select");
+				
+				for(var i=0;i<data["data1"].length;i++){
+					
+					var _div_f = document.createElement("div");
+					_div_f.className = "unit_1";
+					_tselect.appendChild(_div_f);
+					var _a_f = document.createElement("a");
+					_a_f.href = "#";
+					_div_f.appendChild(_a_f);
+					var _img_f = document.createElement("img");
+					_img_f.src = "img/"+data["data1"][i]["img"];
+					var _div_s = document.createElement("div");
+					_div_s.innerHTML =  data["data1"][i]["explain"];
+					_div_s.className = "bottom";
+					_a_f.appendChild(_img_f);
+					_a_f.appendChild(_div_s);
+					var _span_f = document.createElement("span");
+					var _span_s = document.createElement("span");
+					_span_f.className = "cls2";
+					_span_s.className = "cls1";
+					_span_s.innerHTML = "进入";
+					_div_s.appendChild(_span_f);
+					_div_s.appendChild(_span_s);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="head">
+			<div class="class1 clear">
+				<a href="javascript:;" class="link_1" style="background:url(img/sprite.png) no-repeat -1px -1px;">手机海淘</a>
+				<a href="javascript:;" class="link_2" style="background:url(img/sprite.png) no-repeat 0 -424px;">海淘盒子</a>
+				<p class="para1">您好，请<a href="javascript:;">注册</a>或<a href="javascript:;">登录</a></p>
+			</div>
+		</div>
+		<div id="head_next" class="clear">
+			<a href="javascript:;"><img src="img/logo.png" class="link_3"/></a>
+			<div id="logo-next" class="clear">	
+				<input type="text" class="text" placeholder="输入搜索关键词" />
+				<div class="search"><a href="javascript:;">搜索</a></div>
+				<p class="para2">
+					<a href="javascript:;">coach</a><a href="javascript:;">鱼油</a><a href="javascript:;">GNC</a><a href="javascript:;"><span>新品上架</span></a>
+				</p>
+			</div>
+			<div id="shoppingcar" class="clear">
+				<div class="car clear"><a href="javascript:;"><div class="car_shop" >购物车</div><div class="counter" style="color: white;">0</div></a></div>
+				<div class="collect"><a href="javascript:;"><div class="star">收藏</div></a></div>
+			</div>
+		</div>
+		<div id="head_nav" class="clear">
+			<ul id="list_nav1" class="clear">
+				<a href="javascript:;"><li style="background-color: #e9225f;margin-right: 5px;">首页</li></a><a href="javascript:;"><li>全球特卖</li></a><a href="javascript:;"><li>海淘0元购</li></a><a href="javascript:;"><li>精选专题</li></a>
+				<a href="javascript:;"><li>品牌榜</li></a><a href="javascript:;"><li>店铺推荐</li></a><a href="javascript:;"><li>海淘圈</li></a>
+			</ul>
+			<ul id="list_nav2" class="clear">
+				<a href="javascript:;"><li class="li1" >自助海淘</li></a><a href="javascript:;"><li class="li2">全球转运</li></a>
+			</ul>
+		</div>
+		<!--头部-->
+		<div id="fixed">
+			<span class="service">在线客服</span>
+				<ul class="hot_wire">
+					<li style="background: url(img/sprite.png) no-repeat -1px -563px;"><a href="#">微信客服</a></li>
+					<li style="background: url(img/sprite.png) no-repeat -1px -523px;"><a href="#">QQ客服</a></li>
+					<li style="background: url(img/sprite.png) no-repeat -1px -637px;"><a href="#">400电话</a></li>
+				</ul>
+			
+		</div>
+		
+		<div id="fixed_th"></div>
+		
+		<div id="flexslide">
+			<ul id="slide">
+				<li style="z-index: 1;"><a href="javascript:;"><img src="img/shanghaikuajingdianshang.jpg"/></a></li>
+				<li ><a href="javascript:;"><img src="img/aozhoutunhuojie.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="img/ribenbaowenbei.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="img/baoshibushui.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="img/deguomama.jpg"/></a></li>
+				<li><a href="javascript:;"><img src="img/zhongqiu.jpg"/></a></li>
+			</ul>
+			<ul id="follow" class="clear">
+	   			<li class="changeback" style="background: #ff7a20;"></li>
+	   			<li></li>
+	   			<li></li>
+	   			<li></li>
+	   			<li></li>
+	   			<li></li>
+	   		</ul>
+		</div>
+		
+		<div id="conduct">
+
+			<div id="more_select" class="clear">
+				<div id="m_conduct" class="clear">
+					<span class="more"><a href="#">更多精品</a></span>
+					<a href="#"><span class="more_r"></span></a>
+				</div>
+				<div id="seasonal"><a href="#">当季精选</a></div>
+			</div>
+			
+			<div id="T_select" class="clear">
+				<!--<div class="unit_1">
+						<a href="javascript">
+							<img src="img/20160826100612_369925.jpg"/>
+							<div class="bottom">
+								特卖团ZT20160901
+								<span class="cls2"></span>
+								<span class="cls1">进入</span>
+								
+							</div>
+						</a>
+				</div>-->
+				<!--<div></div><div></div><div></div><div></div><div></div>-->
+			</div>
+			
+			<div id="goods_1">
+				<a href="#">
+					<div class="goods_1_t clear">
+						<div class="big">
+							<img src=""/>
+						</div>
+						<ul class="clear">
+							<li><img src="img/12650_0.jpg!150.jpg"/><b>129.00</b><span>128</span></li>
+							<li><img src=""/><b>129.00</b><span>128</span></li>
+							<li><img src=""/><b></b><span></span></li>
+							<li><img src=""/><b></b><span></span></li>
+							<li><img src=""/><b></b><span></span></li>
+							<li><img src=""/><b></b><span></span></li>
+						</ul>
+					</div>
+					<ul class="goods_1_b clear">
+						<li><img src="img/12650_0.jpg!150.jpg"/><span>剪发卡</span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+						<li><img src=""/><span></span></li>
+					</ul>
+				</a>
+			</div>
+			
+		</div>
+		<!--尾部-->
+		<div id="footer" class="clear">
+			<span class="foot_1 clear">
+				<a href="#"><span>关于我们</span></a>
+				<a href="#"><span>联系我们</span></a>
+				<a href="#"><span>战略合作</span></a>
+				<a href="#"><span>团购供应商</span></a>
+				<a href="#"><span>商家入驻</span></a>
+				<a href="#"><span>友情链接</span></a>
+				<a href="#"><span>商务合作</span></a>
+				<a href="#"><span>加入我们</span></a>
+			</span>
+			<span class="foot_2">客服热线&ensp;<b>400-850-0020</b>&ensp;&copy;2015&ensp;海淘网&ensp;沪ICP备08105837号</span>
+			<div class="foot_3 clear">
+				<a href="#"><img src="img/gongshangicon.gif"/></a>
+				<span>网安备310011502002285</span>
+			</div>
+		</div>
+	</body>
+</html>

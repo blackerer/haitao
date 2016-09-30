@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/head_nav.css"/>
+		<link rel="stylesheet" type="text/css" href="css/footer.css"/>
+		<style type="text/css">
+			#register{margin: 0 auto;width: 1428px;height: 760px;background: cyan;}
+		</style>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			$(window).ready(function(){
+				scroll();
+			})
+			function scroll(){
+				document.onscroll = function(){
+					var s_top = document.documentElement.scrollTop || document.body.scrollTop;
+					var fixed_th = document.getElementById("fixed_th");
+					var headNav = document.getElementById("head_nav");
+					if(s_top>0){
+						fixed_th.style.display = "block";
+					}else{
+						fixed_th.style.display = "none";
+					}
+					if(s_top>156){
+						headNav.style.position = "fixed";
+						headNav.style.top = "0px";
+						headNav.style.left = "auto";
+						headNav.style.zIndex = 2000;
+					}else{
+						headNav.style.position = "relative";
+						headNav.style.zIndex = 0;
+					}
+					fixed_th.onclick = function(){
+						document.body.scrollTop = 0;
+						document.documentElement.scrollTop = 0;
+						fixed_th.style.display = "none";
+					}
+				}
+			}
+
+				
+		</script>
+	</head>
+	
+	
+	
+	
+	<body>
+		<div id="head">
+			<div class="class1 clear">
+				<a href="javascript:;" class="link_1" style="background:url(img/sprite.png) no-repeat -1px -1px;">手机海淘</a>
+				<a href="javascript:;" class="link_2" style="background:url(img/sprite.png) no-repeat 0 -424px;">海淘盒子</a>
+				<p class="para1">您好，请<a href="javascript:;">注册</a>或<a href="javascript:;">登录</a></p>
+			</div>
+		</div>
+		<div id="head_next" class="clear">
+			<a href="javascript:;"><img src="img/logo.png" class="link_3"/></a>
+			<div id="logo-next" class="clear">	
+				<input type="text" class="text" placeholder="输入搜索关键词" />
+				<div class="search"><a href="javascript:;">搜索</a></div>
+				<p class="para2">
+					<a href="javascript:;">coach</a><a href="javascript:;">鱼油</a><a href="javascript:;">GNC</a><a href="javascript:;"><span>新品上架</span></a>
+				</p>
+			</div>
+			<div id="shoppingcar" class="clear">
+				<div class="car clear"><a href="javascript:;"><div class="car_shop" >购物车</div><div class="counter" style="color: white;">0</div></a></div>
+				<div class="collect"><a href="javascript:;"><div class="star">收藏</div></a></div>
+			</div>
+		</div>
+		<div id="head_nav" class="clear">
+			<ul id="list_nav1" class="clear">
+				<a href="javascript:;"><li style="background-color: #e9225f;margin-right: 5px;">首页</li></a><a href="javascript:;"><li>全球特卖</li></a><a href="javascript:;"><li>海淘0元购</li></a><a href="javascript:;"><li>精选专题</li></a>
+				<a href="javascript:;"><li>品牌榜</li></a><a href="javascript:;"><li>店铺推荐</li></a><a href="javascript:;"><li>海淘圈</li></a>
+			</ul>
+			<ul id="list_nav2" class="clear">
+				<a href="javascript:;"><li class="li1" >自助海淘</li></a><a href="javascript:;"><li class="li2">全球转运</li></a>
+			</ul>
+		</div>
+		<!--头部-->
+		
+		<div id="fixed_th"></div>
+		
+		<div id="register">
+			
+		</div>
+		
+		<!--尾部-->
+		<div id="footer" class="clear">
+			<span class="foot_1 clear">
+				<a href="#"><span>关于我们</span></a>
+				<a href="#"><span>联系我们</span></a>
+				<a href="#"><span>战略合作</span></a>
+				<a href="#"><span>团购供应商</span></a>
+				<a href="#"><span>商家入驻</span></a>
+				<a href="#"><span>友情链接</span></a>
+				<a href="#"><span>商务合作</span></a>
+				<a href="#"><span>加入我们</span></a>
+			</span>
+			<span class="foot_2">客服热线&ensp;<b>400-850-0020</b>&ensp;&copy;2015&ensp;海淘网&ensp;沪ICP备08105837号</span>
+			<div class="foot_3 clear">
+				<a href="#"><img src="img/gongshangicon.gif"/></a>
+				<span>网安备310011502002285</span>
+			</div>
+		</div>
+	
+	</body>
+</html>
